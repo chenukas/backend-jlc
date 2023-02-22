@@ -1,0 +1,31 @@
+{
+  "name": "backend-jlc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenukas/backend-jlc.git"
+  },
+  "author": "Chenuka Sumanasekara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chenukas/backend-jlc/issues"
+  },
+  "homepage": "https://github.com/chenukas/backend-jlc#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "joi": "^17.8.3",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.2",
+    "nodemon": "^2.0.20",
+    "winston": "^3.8.2"
+  }
+}

@@ -1,0 +1,7 @@
+{"level":"info","message":"Database is connected","timestamp":"2023-02-22T04:07:46.073Z"}
+{"level":"info","message":"Server is running on 5000","timestamp":"2023-02-22T13:51:37.067Z"}
+{"level":"info","message":"Database is connected","timestamp":"2023-02-22T13:51:40.320Z"}
+{"level":"info","message":"Success 200: User statistics are found","timestamp":"2023-02-22T13:51:51.012Z"}
+{"level":"info","message":"Success 200: Users are found","timestamp":"2023-02-22T13:51:54.743Z"}
+{"level":"info","message":"Success 200: User is found","timestamp":"2023-02-22T13:52:01.514Z"}
+{"level":"error","message":"Unauthorized request 401: You are not allowed","timestamp":"2023-02-22T13:52:05.756Z"}
