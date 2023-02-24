@@ -9,8 +9,11 @@ const app = express();
 
 middlewares(app);
 
-app.get("/api/health", () => {
-    console.log("Server is healthy and working");
+app.get("/api/health", (req, res) => {
+    return res.status(200).json({
+        success: true,
+        message: "Server is healthy and working"
+    })
 });
 
 routes(app);
