@@ -55,9 +55,8 @@ const getAllUsers = async (req, res) => {
 };
 
 const getUserStats = async (req, res) => {
-    const query = req.query.new;
     try {
-        const result = await UserService.getUserStats(query);
+        const result = await UserService.getUserStats();
 
         return handleSuccessResponse(res, result, "User statistics are found");
     } catch (err) {

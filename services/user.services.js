@@ -65,7 +65,7 @@ const getAllUsers = async (query = "") => {
     }
 };
 
-const getUserStats = async (query = "") => {
+const getUserStats = async () => {
 
     const date = new Date();
     const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
