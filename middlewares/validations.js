@@ -21,12 +21,10 @@ const userDataValidation = (req, res, next) => {
 
 const productDataValidation = (req, res, next) => {
     const schema = Joi.object({
-        title: Joi.string().max(15).min(5).required(),
+        title: Joi.string().max(25).min(5).required(),
         desc: Joi.string().max(255).min(50).required(),
         img: Joi.string().required(),
         categories: Joi.array(),
-        size: Joi.string(),
-        color: Joi.string(),
         price: Joi.number().required(),
     });
 
