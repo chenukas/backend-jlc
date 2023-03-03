@@ -5,7 +5,7 @@ const { verifyToken, verifyTokenAndAdmin, verifyTokenAndAuthorization } = requir
 router.post("/", verifyToken, orderController.createOrder);
 router.put("/:id", verifyTokenAndAdmin, orderController.updateOrder);
 router.delete("/:id", verifyTokenAndAdmin, orderController.deleteOrder);
-router.get("/find/:id", verifyTokenAndAuthorization, orderController.getOrders);
+router.get("/find/:id", verifyToken, orderController.getOrders);
 router.get("/" , verifyTokenAndAdmin, orderController.getAllOrders);
 router.get("/stats", verifyTokenAndAdmin, orderController.getOrderStats);
 
