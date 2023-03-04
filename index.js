@@ -1,7 +1,7 @@
+require('dotenv').config();
 const express = require("express");
 const middlewares = require("./middlewares")
 const connectDatabase = require("./config/database");
-const config = require("./config");
 const logger = require("./utils");
 const routes = require("./routes");
 
@@ -18,8 +18,8 @@ app.get("/api/health", (req, res) => {
 
 routes(app);
 
-app.listen(config.PORT, () => {
-    logger.info(`Server is running on ${config.PORT}`);
+app.listen(process.env.PORT, () => {
+    logger.info(`Server is running on ${process.env.PORT}`);
 });
 
 connectDatabase();
