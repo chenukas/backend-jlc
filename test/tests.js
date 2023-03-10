@@ -26,7 +26,7 @@ const newUser = {
 
 const newProduct = {
     "title": "Test Product Title",
-    "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum has been the industry's",
+    "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum has been the industry', Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum has been the industry's, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum has been the industry's",
     "img": "https://images.pexels.com/photos/6611188/pexels-photo-6611188.jpeg",
     "categories": [
         "testCategory1",
@@ -50,6 +50,7 @@ const authRoutes = '/api/auth'
 const productRoutes = '/api/products'
 const orderRoutes = '/api/orders'
 const cartRoutes = '/api/carts'
+const stripeRoutes = '/api/payments'
 
 describe('Drop all the collections in database', () => {
     beforeEach((done) => {
@@ -606,6 +607,26 @@ describe('/GET/ get orders\'\ stats ', () => {
         chai
             .request(server)
             .get(`${orderRoutes}/stats`)
+            .set("Authorization", `Bearer ${adminToken}`)
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('data');
+                res.body.data.should.be.a('array');
+                done();
+            });
+    });
+})
+
+/*
+* /GET/ get payments
+* /api/payments
+*/
+describe('/GET/ get payments', () => {
+    it('it should get payments', (done) => {
+        chai
+            .request(server)
+            .get(`${stripeRoutes}`)
             .set("Authorization", `Bearer ${adminToken}`)
             .end((err, res) => {
                 res.should.have.status(200);
