@@ -1,7 +1,8 @@
 const router = require("express").Router();
 const stripeController = require("../controllers/stripe.controllers");
-const { verifyTokenAndAuthorization } = require("../middlewares/verifyToken");
+const { verifyTokenAndAuthorization, verifyTokenAndAdmin } = require("../middlewares/verifyToken");
 
-router.post("/payment", verifyTokenAndAuthorization, stripeController.processPayment);
+router.post("/checkout", verifyTokenAndAuthorization, stripeController.processPayment);
+router.get("/", verifyTokenAndAdmin, stripeController.getAllPayments)
 
 module.exports = router;
