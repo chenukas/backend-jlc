@@ -1,5 +1,6 @@
 const logger = require("../utils");
 const stripe = require("stripe")(process.env.STRIPE_KEY);
+const Payment = require('../models/payment.model');
 
 const processPayment = async (payment) => {
     try {
@@ -10,7 +11,18 @@ const processPayment = async (payment) => {
         })
 
         if (charge.status === "succeeded") {
-            return charge
+            const newPayment = new Payment({
+                userId: payment.userId,
+                paymentId: charge.id,
+                amount: charge.amount,
+                source: charge.source,
+                currency: charge.currency,
+                status: charge.status,
+                receipt_url: charge.receipt_url
+            })
+
+            const savedPayment = await newPayment.save();
+            return savedPayment;
         } else {
             logger.error(`Payment gateway failed`);
         }
@@ -19,6 +31,22 @@ const processPayment = async (payment) => {
     }
 };
 
+const getAllPayments = async () => {
+    try {
+        
+        const payments = await Payment.find();
+
+        if (payments) {
+            return payments
+        }
+
+        return false;
+    } catch (err) {
+        logger.error(`Getting all payments failed: ${err}`);
+    }
+};
+
 module.exports = {
-    processPayment
+    processPayment,
+    getAllPayments
 }
