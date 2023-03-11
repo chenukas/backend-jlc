@@ -4,6 +4,8 @@ const logger = require("../utils");
 
 const userDataValidation = (req, res, next) => {
     const schema = Joi.object({
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
         username: Joi.string().max(15).min(5).required(),
         email: Joi.string().email().required(),
         password: Joi.string().min(6).required()
