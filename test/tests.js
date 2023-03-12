@@ -368,7 +368,9 @@ describe('/POST/ add cart', () => {
                 "products": [{
                     "productId": product._id,
                     "quantity": 1
-                }]
+                }],
+                "qty": 1,
+                "total": 5000
             })
             .end((err, res) => {
                 res.should.have.status(200);
