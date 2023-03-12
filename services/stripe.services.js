@@ -12,7 +12,7 @@ const processPayment = async (payment) => {
 
         if (charge.status === "succeeded") {
             const newPayment = new Payment({
-                userId: payment.userId,
+                email: payment.email,
                 paymentId: charge.id,
                 amount: charge.amount,
                 source: charge.source,

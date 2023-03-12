@@ -19,6 +19,8 @@ let cart;
 let order;
 
 const newUser = {
+    "firstName":"Test",
+    "lastName": "User",
     "username": "testUser",
     "email": "testUser@gmail.com",
     "password": "testuser321"
