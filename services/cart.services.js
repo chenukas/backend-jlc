@@ -58,25 +58,9 @@ const getCart = async (id) => {
     }
 };
 
-const getAllCarts = async () => {
-    try {
-        
-        const carts = await Cart.find();
-
-        if (carts) {
-            return carts
-        }
-
-        return false;
-    } catch (err) {
-        logger.error(`Getting carts failed: ${err}`);
-    }
-};
-
 module.exports = {
     addCart,
     updateCart,
     deleteCart,
-    getCart,
-    getAllCarts,
+    getCart
 }

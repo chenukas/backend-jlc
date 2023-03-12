@@ -49,24 +49,9 @@ const getCart = async (req, res) => {
     }
 };
 
-const getAllCarts = async (req, res) => {
-    try {
-        const result = await CartService.getAllCarts();
-
-        if (result && result.length !== 0) {
-            return handleSuccessResponse(res, result, "Carts are found");
-        } else {
-            return handleSuccessResponse(res, [], "Carts are empty");
-        }
-    } catch (err) {
-        return handleError(res, err.message);
-    }
-};
-
 module.exports = {
     addCart,
     updateCart,
     deleteCart,
-    getCart,
-    getAllCarts
+    getCart
 }
