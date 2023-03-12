@@ -1,11 +1,15 @@
 const AuthService = require("../services/auth.services");
-const { handleSuccessResponse, handleError, handleUnauthorizedRequest } = require("../utils/responseHandler");
+const { handleSuccessResponse, handleError, handleUnauthorizedRequest, handleBadRequest } = require("../utils/responseHandler");
 
 const registerUser = async (req, res) => {
     try {
         const result = await AuthService.registerUser(req.body);
+        if (result) {
+            return handleSuccessResponse(res, result, "User registered successfully");
+        } else {
+            return handleBadRequest(res, `You've entered wrong details`)
+        }
 
-        return handleSuccessResponse(res, result, "User registered successfully");
     } catch (err) {
         return handleError(res, err.message);
     }
