@@ -366,8 +366,7 @@ describe('/POST/ add cart', () => {
             .send({
                 "userId": user._id,
                 "products": [{
-                    "productId": product._id,
-                    "quantity": 1
+                    "product": product,
                 }],
                 "qty": 1,
                 "total": 5000
@@ -417,8 +416,7 @@ describe('/PUT/ update cart', () => {
             .send({
                 "userId": user._id,
                 "products": [{
-                    "productId": product._id,
-                    "quantity": 5
+                    "product": product,
                 }]
             })
             .end((err, res) => {
