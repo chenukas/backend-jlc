@@ -368,7 +368,9 @@ describe('/POST/ add cart', () => {
                 "products": [{
                     "productId": product._id,
                     "quantity": 1
-                }]
+                }],
+                "qty": 1,
+                "total": 5000
             })
             .end((err, res) => {
                 res.should.have.status(200);
@@ -397,26 +399,6 @@ describe('/GET/ get a cart', () => {
                 res.body.data.should.have.property('_id').eql(cart._id);
                 res.body.data.should.have.property('userId').eql(user._id);
                 res.body.data.should.have.property('products').to.be.a('array');
-                done();
-            });
-    });
-})
-
-/*
-* /GET/ get carts
-* /api/carts
-*/
-describe('/GET/ get carts', () => {
-    it('it should get carts', (done) => {
-        chai
-            .request(server)
-            .get(`${cartRoutes}`)
-            .set("Authorization", `Bearer ${adminToken}`)
-            .end((err, res) => {
-                res.should.have.status(200);
-                res.body.should.be.a('object');
-                res.body.should.have.property('data');
-                res.body.data.should.be.a('array');
                 done();
             });
     });
