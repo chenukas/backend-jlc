@@ -365,9 +365,7 @@ describe('/POST/ add cart', () => {
             .set("Authorization", `Bearer ${userToken}`)
             .send({
                 "userId": user._id,
-                "products": [{
-                    "product": product,
-                }],
+                "products": [product],
                 "qty": 1,
                 "total": 5000
             })
@@ -415,9 +413,7 @@ describe('/PUT/ update cart', () => {
             .set("Authorization", `Bearer ${userToken}`)
             .send({
                 "userId": user._id,
-                "products": [{
-                    "product": product,
-                }]
+                "products": [product]
             })
             .end((err, res) => {
                 res.should.have.status(200);
