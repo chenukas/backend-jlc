@@ -1,16 +1,18 @@
 const User = require("../models/user.model");
 const logger = require("../utils");
+const CryptoJS = require("crypto-js");
 
 const updateUser = async (id, user) => {
-    if (user.password) {
+    const { password, ...others } = user
+    if (user.password != '') {
         user.password = CryptoJS.AES.encrypt(user.password, process.env.PASS_SECRET).toString();
     }
 
     try {
         const updatedUser = await User.findByIdAndUpdate(id, {
-            $set: user
+            $set: user.password != '' ? user : others
         }, { new: true });
-        
+
         return updatedUser;
     } catch (err) {
         logger.error(`Updating user failed: ${err}`);
@@ -20,7 +22,7 @@ const updateUser = async (id, user) => {
 const deleteUser = async (id) => {
 
     try {
-        
+
         const result = await User.findByIdAndDelete(id);
         if (result) {
             logger.info(`User ${result.email} is deleted`);
@@ -36,7 +38,7 @@ const deleteUser = async (id) => {
 const getUser = async (id) => {
 
     try {
-        
+
         const user = await User.findById(id);
         if (user) {
 
@@ -54,8 +56,8 @@ const getUser = async (id) => {
 const getAllUsers = async (query = "") => {
 
     try {
-        
-        const users = query 
+
+        const users = query
             ? await User.find().sort({ _id: -1 }).limit(10)
             : await User.find();
 
@@ -71,13 +73,13 @@ const getUserStats = async () => {
     const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
 
     try {
-        
+
         const data = await User.aggregate([{
-            $match: { createdAt: { $gte: lastYear }}
+            $match: { createdAt: { $gte: lastYear } }
         }, {
-            $project: { month: { $month: "$createdAt" }}
+            $project: { month: { $month: "$createdAt" } }
         }, {
-            $group: { _id: "$month", total: { $sum : 1 } }
+            $group: { _id: "$month", total: { $sum: 1 } }
         }])
 
         return data;

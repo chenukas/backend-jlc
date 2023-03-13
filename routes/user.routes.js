@@ -4,7 +4,7 @@ const { verifyTokenAndAuthorization, verifyTokenAndAdmin } = require("../middlew
 
 router.put("/:id", verifyTokenAndAuthorization, userController.updateUser);
 router.delete("/:id", verifyTokenAndAuthorization, userController.deleteUser);
-router.get("/find/:id", verifyTokenAndAdmin, userController.getUser);
+router.get("/find/:id", verifyTokenAndAuthorization, userController.getUser);
 router.get("/", verifyTokenAndAdmin, userController.getAllUsers);
 router.get("/stats", verifyTokenAndAdmin, userController.getUserStats);
 
