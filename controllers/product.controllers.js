@@ -64,21 +64,10 @@ const getAllProducts = async (req, res) => {
     }
 };
 
-const getProductStats = async (req, res) => {
-    try {
-        const result = await ProductService.getProductStats();
-
-        return handleSuccessResponse(res, result, "Product statistics are found");
-    } catch (err) {
-        return handleError(res, err.message);
-    }
-};
-
 module.exports = {
     addProduct,
     updateProduct,
     deleteProduct,
     getProduct,
-    getAllProducts,
-    getProductStats
+    getAllProducts
 }

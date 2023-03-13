@@ -42,7 +42,7 @@ const getOrders = async (req, res) => {
         if (result) {
             return handleSuccessResponse(res, result, "Orders are found");
         } else {
-            return handleBadRequest(res, "Orders are not found");
+            return handleSuccessResponse(res, [], "Orders are not found");
         }
     } catch (err) {
         return handleError(res, err.message);

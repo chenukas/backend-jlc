@@ -9,7 +9,6 @@ const processPayment = async (payment) => {
             amount: payment.amount,
             currency: "aud"
         })
-
         if (charge.status === "succeeded") {
             const newPayment = new Payment({
                 email: payment.email,

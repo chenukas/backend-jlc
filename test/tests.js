@@ -38,13 +38,13 @@ const newProduct = {
 }
 
 const testAdmin = {
-    "username": "testAdmin",
-    "password": "testAdmin321"
+    "username": "adminuser",
+    "password": "adminuser"
 }
 
 const testUser = {
-    "username": "testChenuka",
-    "password": "testChenuka321"
+    "username": "customeruser",
+    "password": "customeruser"
 }
 
 const userRoutes = '/api/users'
@@ -365,10 +365,7 @@ describe('/POST/ add cart', () => {
             .set("Authorization", `Bearer ${userToken}`)
             .send({
                 "userId": user._id,
-                "products": [{
-                    "productId": product._id,
-                    "quantity": 1
-                }],
+                "products": [product],
                 "qty": 1,
                 "total": 5000
             })
@@ -416,10 +413,7 @@ describe('/PUT/ update cart', () => {
             .set("Authorization", `Bearer ${userToken}`)
             .send({
                 "userId": user._id,
-                "products": [{
-                    "productId": product._id,
-                    "quantity": 5
-                }]
+                "products": [product]
             })
             .end((err, res) => {
                 res.should.have.status(200);
@@ -468,10 +462,7 @@ describe('/POST/ add order', () => {
             .set("Authorization", `Bearer ${userToken}`)
             .send({
                 "userId": user._id,
-                "products": [{
-                    "productId": product._id,
-                    "quantity": 1
-                }],
+                "products": [product],
                 "amount": 5000,
                 "address": { }
             })
@@ -536,14 +527,7 @@ describe('/PUT/ update order', () => {
             .set("Authorization", `Bearer ${adminToken}`)
             .send({
                 "userId": user._id,
-                "products": [{
-                    "productId": product._id,
-                    "quantity": 5
-                },
-                {
-                    "productId": product._id,
-                    "quantity": 5
-                }],
+                "products": [product],
                 "amount": 10000,
                 "address": { }
             })
