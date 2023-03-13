@@ -4,6 +4,7 @@ const middlewares = require("./middlewares")
 const connectDatabase = require("./config/database");
 const logger = require("./utils");
 const routes = require("./routes");
+const swaggerDocs = require('./utils/swagger');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.get("/api/health", (req, res) => {
 });
 
 routes(app);
+swaggerDocs(app)
 
 app.listen(process.env.PORT, () => {
     logger.info(`Server is running on ${process.env.PORT}`);
