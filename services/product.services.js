@@ -80,19 +80,11 @@ const getAllProducts = async (query = "") => {
     }
 };
 
-const getProductStats = async () => {
-    //implement function to retrieve stats related to products here...
-    console.log('Service: Get Product Status')
-};
-
-
-
 
 module.exports = {
     addProduct,
     updateProduct,
     deleteProduct,
     getProduct,
-    getAllProducts,
-    getProductStats
+    getAllProducts
 }
