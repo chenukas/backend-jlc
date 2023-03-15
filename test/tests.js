@@ -413,7 +413,9 @@ describe('/PUT/ update cart', () => {
             .set("Authorization", `Bearer ${userToken}`)
             .send({
                 "userId": user._id,
-                "products": [product]
+                "products": [product],
+                "qty": 1,
+                "total": 5000
             })
             .end((err, res) => {
                 res.should.have.status(200);
